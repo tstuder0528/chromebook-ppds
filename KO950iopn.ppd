@@ -343,29 +343,51 @@
 *End
 *CloseUI: *PageRegion
 
-*OpenUI *Staple/Staple: PickOne
-*OrderDependency: 2 AnySetup *Staple
-*DefaultStaple: None
-*Staple None/Off:  "<< /Finish 0 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*Staple 1StapleAuto(Left)/Left Corner (Auto):  "<< /Finish 2 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*Staple 1StapleZeroLeft/Left Corner (0 degrees):  "<< /Finish 5 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*Staple 1StapleAuto(Right)/Right Corner (Auto):  "<< /Finish 3 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*Staple 1StapleZeroRight/Right Corner (0 degrees):  "<< /Finish 6 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*Staple 2Staples/2 Position:  "<< /Finish 4 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*CloseUI: *Staple
+*OpenUI *Duplex/2-Sided Printing: PickOne
+*OrderDependency: 15 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/Off: "<< /Duplex false >> setpagedevice"
+*Duplex DuplexNoTumble/Long-Edge Binding: "<< /Duplex true /Tumble false >> setpagedevice"
+*Duplex DuplexTumble/Short-Edge Binding: "<< /Duplex true /Tumble true >> setpagedevice"
+*CloseUI: *Duplex
 
-*OpenUI *Punch/Punch: PickOne
-*OrderDependency: 1 AnySetup *Punch
-*DefaultPunch: None
-*Punch None/Off:  "<< /PunchMode false >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*Punch 2holes/2-Hole:  "<< /PunchMode true /PunchNum 2 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*Punch 3holes/3-Hole:  "<< /PunchMode true /PunchNum 3 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*Punch 4holes/4-Hole:  "<< /PunchMode true /PunchNum 4 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
-*CloseUI: *Punch
+*OpenUI *StapleLocation/Staple: PickOne
+*OrderDependency: 2 AnySetup *StapleLocation
+*DefaultStapleLocation: None
+*StapleLocation None/Off:  "<< /Finish 0 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*StapleLocation SinglePortrait/Left Corner (Auto):  "<< /Finish 2 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*StapleLocation SingleLandscape/Left Corner (0 degrees):  "<< /Finish 5 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*StapleLocation UpperRight/Right Corner (Auto):  "<< /Finish 3 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*StapleLocation DualLeft/2 Position:  "<< /Finish 4 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*CloseUI: *StapleLocation
+
+*OpenUI *PunchMedia/Hole Punch: PickOne
+*OrderDependency: 1 AnySetup *PunchMedia
+*DefaultPunchMedia: None
+*PunchMedia None/Off:  "<< /PunchMode false >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*PunchMedia 2Hole/2-Hole:  "<< /PunchMode true /PunchNum 2 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*PunchMedia 3Hole/3-Hole:  "<< /PunchMode true /PunchNum 3 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*PunchMedia 4Hole/4-Hole:  "<< /PunchMode true /PunchNum 4 >> /KMOptions /ProcSet findresource /setKMoptions get exec"
+*CloseUI: *PunchMedia
+
+*OpenGroup: InstallableOptions/Installable Options
+
+*OpenUI *Finisher/Finisher: PickOne
+*OrderDependency: 1 AnySetup *Finisher
+*DefaultFinisher: FS540
+*Finisher None/None:  ""
+*Finisher FS533/FS-533:  ""
+*Finisher FS539/FS-539:  ""
+*Finisher JS506/JS-506:  ""
+*Finisher JS508/JS-508:  ""
+*Finisher FS540/FS-540:  ""
+*Finisher FS540JS602/FS-540+JS-602:  ""
+*Finisher FS542/FS-542:  ""
+*CloseUI: *Finisher
 
 *OpenUI *KOPunch/Punch Unit: PickOne
 *OrderDependency: 1 AnySetup *KOPunch
-*DefaultKOPunch: None
+*DefaultKOPunch: PK526-3
 *KOPunch None/None:  ""
 *KOPunch PK519/PK-519 (2-Hole):  ""
 *KOPunch PK519-3/PK-519 (2/3-Hole):  ""
@@ -385,20 +407,7 @@
 *KOPunch PK527-SWE4/PK-527 (SWE 4-Hole):  ""
 *CloseUI: *KOPunch
 
-
-*OpenUI *Finisher/Finisher: PickOne
-*OrderDependency: 1 AnySetup *Finisher
-*DefaultFinisher: None
-*Finisher None/None:  ""
-*Finisher FS533/FS-533:  ""
-*Finisher FS539/FS-539:  ""
-*Finisher JS506/JS-506:  ""
-*Finisher JS508/JS-508:  ""
-*Finisher FS540/FS-540:  ""
-*Finisher FS540JS602/FS-540+JS-602:  ""
-*Finisher FS542/FS-542:  ""
-*CloseUI: *Finisher
-
+*CloseGroup: InstallableOptions
 
 *DefaultPaperDimension: Letter
 *PaperDimension A3/A3:  "842 1191"
